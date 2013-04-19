@@ -1,5 +1,5 @@
 // Including libraries
-
+/*
 var app = require('http').createServer(handler),
     
     static = require('node-static'); // for serving files
@@ -19,3 +19,21 @@ function handler (request, response) {
         fileServer.serve(request, response); // this will return the correct file
     });
 }
+
+*/
+
+var static = require('node-static');
+
+//
+// Create a node-static server instance to serve the './public' folder
+//
+var file = new(static.Server)('./');
+
+require('http').createServer(function (request, response) {
+    request.addListener('end', function () {
+        //
+        // Serve files!
+        //
+        file.serve(request, response);
+    });
+}).listen(8090);
