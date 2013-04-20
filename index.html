@@ -34,10 +34,31 @@
 		
 		
 	</style>
+	<script type="text/javascript" 
+        src="http://playlablondon.com:4570/faye/client.js">
+    </script>
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="lib/impact/impact.js"></script>
 	<script type="text/javascript" src="lib/game/main.js"></script>
 	<script type="text/javascript" src="getSpeed.js"></script>
+	<script>
+	var client = new Faye.Client('http://playlablondon.com:4570/faye');
+	var subscription = client.subscribe('/game', function(message) {
+  // handle message
+
+  		if (message.moveLeft) {
+
+  		}
+
+  		if (message.moveRight) {
+
+  		}
+
+  		if (message.usePowerUp) {
+  			
+  		}
+	});
+	</script>
 	
 	<meta name="viewport" content="initial-scale = 1,maximum-scale = 1" />
 </head>
