@@ -1,6 +1,12 @@
 var express = require("express"),
     app     = express(),
     port    = parseInt(process.env.PORT, 10) || 4570;
+    faye 	= require("faye");
+
+ var bayeux = new faye.NodeAdapter({
+  mount:    '/faye',
+  timeout:  45
+});
     
 app.get("/", function(req, res) {
   res.redirect("/index.html");
@@ -17,4 +23,5 @@ app.configure(function(){
   app.use(app.router);
 });
 
+bayeux.attach(app);
 app.listen(port);
